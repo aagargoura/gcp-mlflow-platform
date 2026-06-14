@@ -1,6 +1,6 @@
 # GCP MLflow Platform
 
-Terraform-based reference architecture for deploying a self-hosted MLflow instance on Google Cloud Platform using Cloud Run, Cloud SQL PostgreSQL, Google Cloud Storage, Secret Manager, and least-privilege IAM.
+Terraform-based architecture for deploying a self-hosted MLflow instance on Google Cloud Platform using Cloud Run, Cloud SQL PostgreSQL, Google Cloud Storage, Secret Manager, and least-privilege IAM.
 
 ## Purpose
 
@@ -14,7 +14,7 @@ Deploy MLflow in a secure and modular way so that:
 - Workload access follows the principle of least privilege.
 
 ## Terraform Structure
-
+```text
 terraform/
 ├── environments/
 │   └── dev/
@@ -29,3 +29,4 @@ terraform/
     ├── mlflow_iam/
     ├── cloud_sql/
     └── cloud_run_mlflow/
+```
