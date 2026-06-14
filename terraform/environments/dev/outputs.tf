@@ -17,3 +17,7 @@ output "cloud_sql_connection_name" {
 output "cloud_sql_instance_name" {
   value = module.cloud_sql.instance_name
 }
+
+output "mlflow_cloud_run_url" {
+  value = module.mlflow_cloud_run.service_uri
+}
