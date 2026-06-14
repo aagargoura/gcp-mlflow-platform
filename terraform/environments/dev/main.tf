@@ -47,3 +47,12 @@ module "db_password_secret" {
     managed_by  = "terraform"
   }
 }
+
+module "mlflow_iam" {
+  source = "../../modules/mlflow_iam"
+
+  project_id            = var.project_id
+  service_account_email = module.mlflow_service_account.email
+  bucket_name           = module.artifact_bucket.name
+  secret_name           = module.db_password_secret.secret_name
+}
