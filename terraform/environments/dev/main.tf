@@ -93,3 +93,16 @@ resource "google_cloud_run_v2_service_iam_member" "me_invoker" {
   role     = "roles/run.invoker"
   member   = "user:aagargoura@carthagexlabs.xyz"
 }
+
+resource "google_service_account" "training_job" {
+  account_id   = "training-job-sa"
+  display_name = "Training Job Service Account"
+  description  = "Service account used by internal training jobs to call the MLflow Cloud Run service."
+}
+
+resource "google_cloud_run_v2_service_iam_member" "training_job_invoker" {
+  name     = module.mlflow_cloud_run.service_name
+  location = var.region
+  role     = "roles/run.invoker"
+  member   = "serviceAccount:${google_service_account.training_job.email}"
+}
