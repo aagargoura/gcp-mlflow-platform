@@ -80,8 +80,9 @@ module "mlflow_cloud_run" {
   mlflow_image = "europe-west3-docker.pkg.dev/mlflow-cloudrun-lab-499220/mlflow/mlflow-server:3.1.0-amd64"
 
   cloud_sql_connection_name = module.cloud_sql.connection_name
-
-  backend_store_uri = "postgresql://mlflow:${var.db_password}@/mlflow?host=/cloudsql/${module.cloud_sql.connection_name}"
+  database_user             = "mlflow"
+  database_name             = "mlflow"
+  db_password_secret_id     = module.db_password_secret.secret_id
 
   artifact_root = module.artifact_bucket.url
 }

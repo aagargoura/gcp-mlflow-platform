@@ -21,13 +21,19 @@ variable "cloud_sql_connection_name" {
   description = "Cloud SQL connection name."
 }
 
-variable "backend_store_uri" {
-  type        = string
-  sensitive   = true
-  description = "MLflow backend store URI."
-}
-
 variable "artifact_root" {
   type        = string
   description = "MLflow artifact root, e.g. gs://bucket-name."
+}
+
+variable "database_user" {
+  type = string
+}
+
+variable "database_name" {
+  type = string
+}
+
+variable "db_password_secret_id" {
+  type = string
 }
