@@ -34,3 +34,16 @@ module "mlflow_service_account" {
   display_name = "MLflow Cloud Run Service Account"
   description  = "Dedicated least-privilege service account for the MLflow Cloud Run service."
 }
+
+module "db_password_secret" {
+  source = "../../modules/secret_manager"
+
+  secret_id    = "mlflow-db-password"
+  secret_value = var.db_password
+
+  labels = {
+    environment = "dev"
+    service     = "mlflow"
+    managed_by  = "terraform"
+  }
+}

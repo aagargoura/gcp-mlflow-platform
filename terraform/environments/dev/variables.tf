@@ -8,3 +8,9 @@ variable "region" {
   description = "GCP region."
   default     = "europe-west3"
 }
+
+variable "db_password" {
+  type        = string
+  description = "Password for the MLflow PostgreSQL database user."
+  sensitive   = true
+}
