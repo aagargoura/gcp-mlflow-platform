@@ -56,3 +56,16 @@ module "mlflow_iam" {
   bucket_name           = module.artifact_bucket.name
   secret_name           = module.db_password_secret.secret_name
 }
+
+module "cloud_sql" {
+  source = "../../modules/cloud_sql"
+
+  instance_name       = "mlflow-postgres-dev"
+  region              = var.region
+  tier                = "db-f1-micro"
+  disk_size_gb        = 10
+  database_name       = "mlflow"
+  database_user       = "mlflow"
+  database_password   = var.db_password
+  deletion_protection = false
+}

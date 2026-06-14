@@ -9,3 +9,11 @@ output "artifact_bucket_url" {
 output "mlflow_service_account_email" {
   value = module.mlflow_service_account.email
 }
+
+output "cloud_sql_connection_name" {
+  value = module.cloud_sql.connection_name
+}
+
+output "cloud_sql_instance_name" {
+  value = module.cloud_sql.instance_name
+}
