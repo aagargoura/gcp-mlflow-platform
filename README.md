@@ -151,6 +151,7 @@ gcloud run services get-iam-policy mlflow-dev \
 # Describe Cloud Run service
 gcloud run services describe mlflow-dev \
   --region=europe-west3
+```
 
 ## Cost notes
  
