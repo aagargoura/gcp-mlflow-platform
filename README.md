@@ -134,6 +134,23 @@ gcloud run services proxy mlflow-dev --region europe-west3
  
 For programmatic access (e.g. training jobs), the calling identity must hold `run.invoker` and send an ID token in the `Authorization` header.
 
+Or using your Google Identity Token
+
+```bash
+# Unauthenticated request (expected: 403 Forbidden)
+curl -I https://mlflow-dev-3o4zsum6gq-ey.a.run.app
+
+# Authenticated request (expected: MLflow HTML response)
+curl -H "Authorization: Bearer $(gcloud auth print-identity-token)" \
+https://mlflow-dev-3o4zsum6gq-ey.a.run.app
+
+# Verify Cloud Run IAM policy
+gcloud run services get-iam-policy mlflow-dev \
+  --region=europe-west3
+
+# Describe Cloud Run service
+gcloud run services describe mlflow-dev \
+  --region=europe-west3
 
 ## Cost notes
  
